@@ -1,6 +1,6 @@
 ---
 name: gemfire
-director_uuid: f0588560-08a8-4ae2-914a-b9e8b12d9303
+director_uuid: 1283c62e-8e7b-43c2-8f97-f42bf8aba812
 release:
   name: cf-gemfire
   version: latest

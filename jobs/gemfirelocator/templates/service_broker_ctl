@@ -26,7 +26,7 @@ case $1 in
     mkdir -p $LOG_DIR
     cd $BIN_DIR    
     
-    java -Dlocator.host=$LOCATORIPADDR -Dlocator.port=$PORT -Dspring.profiles.active=gemfire-service-broker -Djava.net.preferIPv4Stack=true -cp cf-brokers-0.0.1-SNAPSHOT.jar com.pivotal.cloudfoundry.service.broker.JavaServiceBrokerApplication > $STDOUTLOG &  
+    java -Dlocator.host=$LOCATORIPADDR -Dlocator.port=$PORT -Dspring.profiles.active=gemfire-service-broker -Djava.net.preferIPv4Stack=true -cp cf-brokers.jar com.pivotal.cloudfoundry.service.broker.JavaServiceBrokerApplication > $STDOUTLOG &  
     sleep 10
     ps aux | grep JavaServiceBrokerApplication | grep -v grep | awk '{print $2}' > $PIDFILE
     while read line           

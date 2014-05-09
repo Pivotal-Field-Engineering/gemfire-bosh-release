@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-BIN_DIR=/var/vcap/packages/gemfireserver/vFabric_GemFire/bin
-LIB_DIR=/var/vcap/packages/gemfireserver/vFabric_GemFire/lib
+BIN_DIR=/var/vcap/packages/gemfireserver/Pivotal_GemFire/bin
+LIB_DIR=/var/vcap/packages/gemfireserver/Pivotal_GemFire/lib
 RUN_DIR=/var/vcap/sys/run/gemfirelocator
 LOG_DIR=/var/vcap/sys/log/gemfirelocator
 PIDFILE=$RUN_DIR/gemfirelocator.pid
@@ -27,8 +27,11 @@ case $1 in
     then
       rm -rf $LOG_DIR/$LOCATORNAME
     fi
+
+    PROP_DIR=`dirname "$0"`
+        echo "Current Dir for props: $PROP_DIR"
     
-    gfsh start locator --name=$LOCATORNAME --force=true --connect=false --J=-Dgemfire.jmx-manager=true --J=-Dgemfire.jmx-manager-start=true --properties-file=gemfire.properties | grep "Process ID" | sed s/Process\ ID:\ // > $PIDFILE
+    gfsh start locator --name=$LOCATORNAME --force=true --connect=false --J=-Dgemfire.jmx-manager=true --J=-Dgemfire.jmx-manager-start=true --properties-file=$PROP_DIR/gemfire.properties | grep "Process ID" | sed s/Process\ ID:\ // > $PIDFILE
     ;;
 
   stop)
