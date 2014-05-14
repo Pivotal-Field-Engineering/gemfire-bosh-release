@@ -1,5 +1,5 @@
 ---
-name: p-gemfire
+name: pivotal-gemfire
 product_version: 1.0.0.0
 metadata_version: 1.0
 stemcell:
@@ -13,7 +13,7 @@ releases:
     file: cf-gemfire-0.10-dev.tgz
     md5: 89e1b0a78ee87196d12d33bde9a48143
 provides_product_versions:
-  - name: p-gemfire
+  - name: pivotal-gemfire
     version: 1.0.0.0
 label: Pivotal Gemfire
 description: GemFire is the premier in-memory data platform delivering speed and dynamic scalability

@@ -14,10 +14,12 @@ fi
 echo "Extracting archive..."
 tar xzf $archive
 
-if [[ -d bin && `bin/java -version 2>&1` =~ "Java HotSpot" && $? == 0 ]]; then
-  cp -a * ${BOSH_INSTALL_TARGET}
-#  cp java/tools.jar ${BOSH_INSTALL_TARGET}/lib
+ls -l
 
+JDK_DIR=$(find . -type d -name 'jdk1.7*' | head -n1)
+
+if [[ -d $JDK_DIR/bin && `$JDK_DIR/bin/java -version 2>&1` =~ "Java HotSpot" && $? == 0 ]]; then
+  cp -a $JDK_DIR/* ${BOSH_INSTALL_TARGET}
 else
   echo "JVM is not properly packaged."
   exit 1

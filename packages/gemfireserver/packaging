@@ -1,16 +1,27 @@
 set -e 
 
-  echo "Extracting archive Gemfire...."
+  echo "Extracting archive GemFire...."
   pwd
-  unzip gemfire/vFabric_GemFire_701_b40235.zip
-
-  mkdir ${BOSH_INSTALL_TARGET}/vFabric_GemFire
-  cp -a vFabric_GemFire*/* ${BOSH_INSTALL_TARGET}/vFabric_GemFire
+  unzip gemfire/Pivotal_GemFire_7.zip
+  
+  ls -l
+  
+  GEMFIRE_INSTALL_DIR=$(find . -type d -name 'Pivotal_GemFire*' | head -n1)
+  
+  mkdir ${BOSH_INSTALL_TARGET}/Pivotal_GemFire
+  cp -a $GEMFIRE_INSTALL_DIR/* ${BOSH_INSTALL_TARGET}/Pivotal_GemFire
+  
+  TOMCAT_GEMFIRE_MODULE_ZIP=$(find . -type f -name 'Pivotal_GemFire_Modules*Tomcat.zip' | head -n1)
+  
+  echo "Extracting archive Tomcat GemFire Module...."
+  pwd
+  unzip $TOMCAT_GEMFIRE_MODULE_ZIP -d tomcat_gemfire_module
+  cp -a tomcat_gemfire_module/lib/* ${BOSH_INSTALL_TARGET}/Pivotal_GemFire/lib
   
   echo "Extracting archive Service Broker...."
   pwd
-  tar -xvf gemfire/cf-brokers-0.0.1-SNAPSHOT.tar.gz
+  tar -xvf gemfire/cf-brokers.tar.gz
 
   mkdir ${BOSH_INSTALL_TARGET}/gemfire-service-broker
-  cp -a cf-brokers-0.0.1-SNAPSHOT.jar ${BOSH_INSTALL_TARGET}/gemfire-service-broker
+  cp -a cf-brokers.jar ${BOSH_INSTALL_TARGET}/gemfire-service-broker
   cp -r lib ${BOSH_INSTALL_TARGET}/gemfire-service-broker

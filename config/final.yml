@@ -1,5 +1,5 @@
 ---
-final_name: GemFire
+final_name: cf-gemfire
 min_cli_version: 1.5.0.pre.1142
 blobstore:
   provider: s3

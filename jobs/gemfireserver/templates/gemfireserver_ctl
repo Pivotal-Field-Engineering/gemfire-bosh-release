@@ -4,6 +4,7 @@ BIN_DIR=/var/vcap/packages/gemfireserver/gemfire-service-broker
 RUN_DIR=/var/vcap/sys/run/gemfireserver
 LOG_DIR=/var/vcap/sys/log/gemfireserver
 JOB_DIR=JOB_DIR=/var/vcap/jobs/gemfireserver
+GEMFIRE_LIB_DIR=/var/vcap/packages/gemfireserver/Pivotal_GemFire/lib
 PIDFILE=$RUN_DIR/gemfireserver.pid
 STDOUTLOG=$LOG_DIR/gemfireserver.stdout.log
 STDERRLOG=$LOG_DIR/gemfireserver.stderr.log
@@ -26,7 +27,7 @@ case $1 in
     PROP_DIR=`dirname "$0"`
 	echo "Current Dir for props: $PROP_DIR"
 
-	java -Xms$HEAP -Xmx$HEAP -Dprops-file=$PROP_DIR/gemfire.properties -Dspring.profiles.active=gemfire-server -Djava.net.preferIPv4Stack=true -cp cf-brokers-0.0.1-SNAPSHOT.jar com.pivotal.cloudfoundry.service.broker.gemfire.GemfireServer > $STDOUTLOG &
+	java -Xms$HEAP -Xmx$HEAP -Dprops-file=$PROP_DIR/gemfire.properties -Dspring.profiles.active=gemfire-server -Djava.net.preferIPv4Stack=true -cp "cf-brokers.jar:$GEMFIRE_LIB_DIR/gemfire-modules.jar" com.pivotal.cloudfoundry.service.broker.gemfire.GemfireServer > $STDOUTLOG &
 	sleep 10
 	ps aux | grep GemfireServer | grep -v grep | awk '{print $2}' > $PIDFILE
     while read line           

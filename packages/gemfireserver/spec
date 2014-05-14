@@ -5,5 +5,5 @@ dependencies:
 - gemfire_jvm7
 
 files:
-- gemfire/vFabric_GemFire_701_b40235.zip
-- gemfire/cf-brokers-0.0.1-SNAPSHOT.tar.gz 
+- gemfire/Pivotal_GemFire_7.zip
+- gemfire/cf-brokers.tar.gz 
