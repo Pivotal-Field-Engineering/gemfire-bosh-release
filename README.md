@@ -105,7 +105,7 @@ The installation of Gemfire via this BOSH release generally follows the same ste
     Place the Gemfire zip file into the `GEMFIRE_RELEASE_HOME/blobs/gemfire` directory, and the java jdk tar.gz file into the `GEMFIRE_RELEASE_HOME/blobs/java` directory.  You will also need the binary packaging of the service broker.  Follow these steps:
     * Clone the git repository: 'git clone https://github.com/Pivotal-Field-Engineering/cloudfoundry-brokers.git'
     * Compile project using maven: 'mvn package'
-    * Copy the tar.gz package from the target directory to the bosh release blobs directoy: 'cp cf-brokers-0.0.1-SNAPSHOT.tar.gz $GEMFIRE_BOSH_RELEASE_DIR/blobs/gemfire/' 
+    * Copy the tar.gz package from the target directory to the bosh release blobs directoy: 'cp cf-brokers.tar.gz $GEMFIRE_BOSH_RELEASE_DIR/blobs/gemfire/' 
 
     The Service Broker, Gemfire, and Java packages reference these binaries by filename so depending on your exact releases you may need to update the spec and packaging files to reflect those changes.  Please look at the following files:
     ```
