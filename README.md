@@ -1,4 +1,4 @@
-# Gemfire BOSH release
+<h1> VMware has ended active development of this project, this repository will no longer be updated.</h1><br># Gemfire BOSH release
 
 The BOSH Gemfire deployment establishes Gemfire clusters  and v2 Service Brokers for Gemfire into a virtualized environment.  BOSH takes care of provisioning virtual machines (via interface to vCenter or equivalent for AWS or OpenStack), installing dependencies (like Java) and the Gemfire binaries, and could, as well, install grid configurations and grid-resident code (more on the latter in a moment).
 
